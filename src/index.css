@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: "Caveat", cursive;
+
+  --color-cream-canvas: #f7f0e5;
+  --color-cream-bright: #fff8ef;
+  --color-paper-surface: #fffaf3;
+  --color-paper-low: #faf3e8;
+  --color-paper-mid: #f4ede2;
+  --color-keepsake-pink: #f9e9ed;
+  --color-blush-pink: #f5dde3;
+  --color-dusty-rose: #c98d9b;
+  --color-rose-ink: #83505c;
+  --color-rose-deep: #532733;
+  --color-muted-sage: #ccd8c3;
+  --color-sage-ink: #566251;
+  --color-soft-lavender: #e5ddf0;
+  --color-vintage-beige: #e9ddcb;
+  --color-cocoa-deep: #4a3b36;
+  --color-cocoa-muted: #76635b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #f7f0e5;
+    color: #4a3b36;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    background-color: #f7f0e5;
+    color: #4a3b36;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: #f5dde3;
+    color: #532733;
+  }
+}
+
+/* Warm ambient paper shadows from Stitch spec */
+.paper-shadow {
+  box-shadow:
+    0 4px 18px -2px rgba(118, 99, 91, 0.08),
+    0 2px 6px -1px rgba(74, 59, 54, 0.04);
+}
+
+.floating-shadow {
+  box-shadow: 0 12px 32px -4px rgba(74, 59, 54, 0.12);
+}
+
+.rose-glow {
+  box-shadow:
+    0 6px 22px -2px rgba(201, 141, 155, 0.42),
+    0 2px 8px -1px rgba(131, 80, 92, 0.18);
+}
+
+.rose-glow:hover {
+  box-shadow:
+    0 10px 28px -2px rgba(201, 141, 155, 0.55),
+    0 4px 12px -1px rgba(131, 80, 92, 0.24);
+}
+
+/* Subtle vintage paper grain overlay */
+.paper-grain {
+  background-image: radial-gradient(rgba(118, 99, 91, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Lined vintage notebook paper for diary editor */
+.notebook-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 30px,
+    rgba(233, 221, 203, 0.75) 30px,
+    rgba(233, 221, 203, 0.75) 31px
+  );
+  background-position: 0 6px;
+  line-height: 31px;
+}
+
+/* Washi tape textured edge */
+.washi-tape {
+  opacity: 0.88;
+  clip-path: polygon(
+    0% 10%,
+    3% 0%,
+    6% 12%,
+    97% 4%,
+    100% 16%,
+    98% 52%,
+    100% 88%,
+    96% 100%,
+    4% 94%,
+    0% 86%,
+    2% 48%
+  );
+}
+
+/* Gentle ambient animations */
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1.2deg);
+  }
+}
+
+@keyframes orbDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.06);
+  }
+}
+
+@keyframes sparkleDrift {
+  0%,
+  100% {
+    transform: translateY(0px) scale(0.95);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+    opacity: 0.72;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-orb-drift {
+  animation: orbDrift 14s ease-in-out infinite;
+}
+
+.animate-sparkle-drift {
+  animation: sparkleDrift 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-float-slow,
+  .animate-orb-drift,
+  .animate-sparkle-drift {
+    animation: none !important;
+  }
+}
+
+/* Custom warm scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f0e5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d8c1c7;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c98d9b;
+}

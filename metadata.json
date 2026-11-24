@@ -1,0 +1,6 @@
+{
+  "name": "DearMe ♡",
+  "description": "A cozy, vintage scrapbook-inspired personal diary for your daily thoughts, moods, memories, gratitude, and letters to your future self.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
